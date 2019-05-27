@@ -12,7 +12,6 @@ class User:
         Attributes:
             books (dict): empty dict - will contain books titles as keys and the ratings given
                 by the user as values
-
     """
 
     def __init__(self, name, email):
@@ -33,7 +32,6 @@ class User:
 
         Returns:
             bool: True if the two users are equals, False otherwise.
-
         """
         return (self.name == other_user.name and self.email == other_user.email)
 
@@ -43,7 +41,6 @@ class User:
 
         Returns:
             str: the User's email
-
         """
         return self.email
 
@@ -57,7 +54,6 @@ class User:
 
         Returns:
             bool: True if valid email syntax, False otherwise
-
         """
         valid_email = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$',
                                email)
@@ -92,7 +88,6 @@ class User:
         Args:
             book (Book):  book object read
             rating (int): optional, default to None
-
         """
         if isinstance(book, Book):
             try:
@@ -117,7 +112,6 @@ class User:
 
         Returns:
             float: average rating
-
         """
         nb_of_ratings = 0
         sum_ratings = 0
@@ -185,7 +179,6 @@ class Book:
         """
             Returns:
                 str: the book isbn
-
         """
         return self.isbn
 
@@ -245,7 +238,6 @@ class Book:
 
             Returns:
                 float: the average rating
-
         """
         if len(self.ratings):
             return sum(self.ratings) / len(self.ratings)
@@ -263,7 +255,6 @@ class Fiction(Book):
             author (str): the book's author
             isbn (int):  the book isbn
             price(int): the book price, optional, default to 0
-
     """
 
     def __init__(self, title, author, isbn, price=0):
@@ -275,10 +266,8 @@ class Fiction(Book):
 
     def get_author(self):
         """
-
               Returns:
                   str: the book's author
-
         """
         return self.author
 
@@ -342,7 +331,6 @@ class TomeRater:
 
               Yields:
                   Book: a book object from the collection
-
         """
         for book in self.books.keys():
             yield book
@@ -356,7 +344,6 @@ class TomeRater:
 
             Returns:
                 bool: True if the book already exists, False otherwise.
-
         """
 
         catalog = self.catalog_generator()
@@ -372,7 +359,6 @@ class TomeRater:
 
               Returns:
                 bool: True if the book already exists, False otherwise.
-
         """
         if not isinstance(book, Book):
             raise TypeError('The argument must be a Book object')
@@ -409,7 +395,6 @@ class TomeRater:
 
             Returns:
                 Fiction: a Fiction object with above title, author, isbn and price
-
         """
 
         if not self.check_isbn_in_catalog(isbn):
@@ -428,7 +413,6 @@ class TomeRater:
 
             Returns:
                 Fiction: a Fiction object with above title, author, isbn and price
-
         """
         if not self.check_isbn_in_catalog(isbn):
             return NonFiction(title, subject, level, isbn, price)
@@ -462,7 +446,6 @@ class TomeRater:
             name (str): user's name
             email (str): user's email
             user_books (list): list of Book objects belonging to the user, optional, default to None
-
         """
 
         if not User.check_email_is_valid(email):
